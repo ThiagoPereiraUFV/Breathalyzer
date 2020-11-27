@@ -16,15 +16,18 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 	}
 
-	protected void onResume() {
-		super.onResume();
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 
-		final Intent it = getIntent();
-		final double level = it.getDoubleExtra("level", 0);
-		final String classification = it.getStringExtra("classification");
+		if(data.getStringExtra("classification") != null) {
+			final double level = data.getDoubleExtra("level", 0);
+			final String classification = data.getStringExtra("classification");
 
-		final String message = getString(R.string.level) + level + "\n" + getString(R.string.classification) + classification;
-		Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_LONG).show();
+			final String message = getString(R.string.level) + " " + level + "\n" + getString(R.string.classification) + " " + classification;
+			Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+		}
+
+
 	}
 
 	public void send(final View v) {
@@ -34,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
 			final int ndrinks = Integer.parseInt(((EditText) findViewById(R.id.editNdrinks)).getText().toString());
 			final String fasting = ((EditText) findViewById(R.id.editFasting)).getText().toString();
 
-			final Intent it = new Intent(getBaseContext(), Calculate.class);
+			final Intent it = new Intent(this, Calculate.class);
 
 			it.putExtra("weight", weight);
 			it.putExtra("gender", gender);
 			it.putExtra("ndrinks", ndrinks);
 			it.putExtra("fasting", fasting);
 
-			startActivity(it);
+			startActivityForResult(it, 0);
 		} catch(Exception e) {
 			Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
 		}

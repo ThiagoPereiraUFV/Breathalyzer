@@ -27,9 +27,6 @@ public class Calculate extends AppCompatActivity {
 			if(weight == 0) {
 				Toast.makeText(getApplicationContext(), "Weight must be greater that 0!", Toast.LENGTH_SHORT).show();
 				return;
-			} else if(ndrinks == 0) {
-				Toast.makeText(getApplicationContext(), "Weight must be greater that 0!", Toast.LENGTH_SHORT).show();
-				return;
 			}
 
 			if(fasting.equals("y") || fasting.equals("Y") || fasting.equals("s") || fasting.equals("S")) {
@@ -44,16 +41,16 @@ public class Calculate extends AppCompatActivity {
 			}
 
 			final double level = (4.8*ndrinks)/(coefficient*weight);
-			final String classification = (level > 0) ? getString(R.string.alcoholic) : getString(R.string.nonalcoholic);
+			final String classification = (level > 0.2) ? getString(R.string.alcoholic) : getString(R.string.nonalcoholic);
 
-			final Intent it2 = new Intent(getBaseContext(), MainActivity.class);
+			final Intent it2 = new Intent(this, MainActivity.class);
 
 			it2.putExtra("level", level);
 			it2.putExtra("classification", classification);
 
 			it2.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
-			startActivity(it);
+			setResult(0, it2);
 			finish();
 	}
 }
