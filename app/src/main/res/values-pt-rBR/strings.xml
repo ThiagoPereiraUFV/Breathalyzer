@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bafômetro</string>
+    <string name="weight">Peso:</string>
+    <string name="gender">Sexo (m/f):</string>
+    <string name="ndrinks">Nº copos:</string>
+    <string name="fasting">Jejum? (s/n):</string>
+    <string name="send">Enviar dados</string>
+    <string name="classify">Calcular e classificar alcoolemia</string>
+    <string name="level">Taxa de alcoolemia:</string>
+    <string name="classification">Classificação:</string>
+    <string name="alcoholic">Pessoa Alcoolizada</string>
+    <string name="nonalcoholic">Pessoa NÃO Alcoolizada</string>
+</resources>

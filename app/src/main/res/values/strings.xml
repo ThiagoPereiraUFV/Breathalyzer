@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Breathalyzer</string>
+    <string name="weight">Weight:</string>
+    <string name="gender">Gender (m/f):</string>
+    <string name="ndrinks">Nº drinks:</string>
+    <string name="fasting">Fasting? (y/n):</string>
+    <string name="send">Send data</string>
+    <string name="classify">Calculate and classify blood alcohol</string>
+    <string name="level">Blood alcohol level:</string>
+    <string name="classification">Classification:</string>
+    <string name="alcoholic">Alcoholic person</string>
+    <string name="nonalcoholic">Non-alcoholic person</string>
+</resources>
