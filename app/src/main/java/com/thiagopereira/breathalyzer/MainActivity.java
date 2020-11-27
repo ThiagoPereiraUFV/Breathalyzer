@@ -16,6 +16,17 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 	}
 
+	protected void onResume() {
+		super.onResume();
+
+		final Intent it = getIntent();
+		final double level = it.getDoubleExtra("level", 0);
+		final String classification = it.getStringExtra("classification");
+
+		final String message = getString(R.string.level) + level + "\n" + getString(R.string.classification) + classification;
+		Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_LONG).show();
+	}
+
 	public void send(final View v) {
 		try {
 			final double weight = Double.parseDouble(((EditText) findViewById(R.id.editWeight)).getText().toString());
@@ -23,33 +34,14 @@ public class MainActivity extends AppCompatActivity {
 			final int ndrinks = Integer.parseInt(((EditText) findViewById(R.id.editNdrinks)).getText().toString());
 			final String fasting = ((EditText) findViewById(R.id.editFasting)).getText().toString();
 
-			//final Integer it = new Intent(getApplicationContext());
+			final Intent it = new Intent(getBaseContext(), Calculate.class);
 
-			/*
-			double coefficient;
+			it.putExtra("weight", weight);
+			it.putExtra("gender", gender);
+			it.putExtra("ndrinks", ndrinks);
+			it.putExtra("fasting", fasting);
 
-			if(weight == 0) {
-				Toast.makeText(getApplicationContext(), "Weight must be greater that 0!", Toast.LENGTH_SHORT).show();
-				return;
-			} else if(ndrinks == 0) {
-				Toast.makeText(getApplicationContext(), "Weight must be greater that 0!", Toast.LENGTH_SHORT).show();
-				return;
-			}
-
-			if(fasting.equals("y") || fasting.equals("Y") || fasting.equals("s") || fasting.equals("S")) {
-				coefficient = 1.1;
-			} else if(gender.equals("m") || gender.equals("M")) {
-				coefficient = 0.7;
-			} else if(gender.equals("f") || gender.equals("F")) {
-				coefficient = 0.6;
-			} else {
-				Toast.makeText(getApplicationContext(), "Invalid values!", Toast.LENGTH_SHORT).show();
-				return;
-			}
-
-			final double result = (4.8*ndrinks)/(coefficient*weight);
-			*/
-
+			startActivity(it);
 		} catch(Exception e) {
 			Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_SHORT).show();
 		}
