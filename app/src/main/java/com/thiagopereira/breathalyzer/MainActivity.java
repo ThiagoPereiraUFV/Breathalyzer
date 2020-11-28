@@ -34,6 +34,23 @@ public class MainActivity extends AppCompatActivity {
 			final String gender = ((EditText) findViewById(R.id.editGender)).getText().toString();
 			final int ndrinks = Integer.parseInt(((EditText) findViewById(R.id.editNdrinks)).getText().toString());
 			final String fasting = ((EditText) findViewById(R.id.editFasting)).getText().toString();
+			double coefficient;
+
+			if(weight == 0) {
+				Toast.makeText(getApplicationContext(), "Weight must be greater that 0!", Toast.LENGTH_SHORT).show();
+				return;
+			}
+
+			if(fasting.equals("n") || fasting.equals("N")) {
+				coefficient = 1.1;
+			} else if(gender.equals("m") || gender.equals("M")) {
+				coefficient = 0.7;
+			} else if(gender.equals("f") || gender.equals("F")) {
+				coefficient = 0.6;
+			} else {
+				Toast.makeText(getApplicationContext(), "Invalid values!", Toast.LENGTH_SHORT).show();
+				return;
+			}
 
 			final Intent it = new Intent(this, Calculate.class);
 
@@ -41,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 			it.putExtra("gender", gender);
 			it.putExtra("ndrinks", ndrinks);
 			it.putExtra("fasting", fasting);
+			it.putExtra("coefficient", coefficient);
 
 			startActivityForResult(it, 0);
 		} catch(Exception e) {
