@@ -29,7 +29,7 @@ public class Calculate extends AppCompatActivity {
 				return;
 			}
 
-			if(fasting.equals("y") || fasting.equals("Y") || fasting.equals("s") || fasting.equals("S")) {
+			if(fasting.equals("n") || fasting.equals("N")) {
 				coefficient = 1.1;
 			} else if(gender.equals("m") || gender.equals("M")) {
 				coefficient = 0.7;

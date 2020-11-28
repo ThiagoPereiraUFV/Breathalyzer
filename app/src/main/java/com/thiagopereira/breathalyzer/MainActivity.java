@@ -19,15 +19,13 @@ public class MainActivity extends AppCompatActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if(data.getStringExtra("classification") != null) {
+		if(data != null) {
 			final double level = data.getDoubleExtra("level", 0);
 			final String classification = data.getStringExtra("classification");
 
 			final String message = getString(R.string.level) + " " + level + "\n" + getString(R.string.classification) + " " + classification;
 			Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 		}
-
-
 	}
 
 	public void send(final View v) {
