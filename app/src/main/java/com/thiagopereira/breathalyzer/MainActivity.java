@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
 				return;
 			}
 
-			final Intent it = new Intent(this, Calculate.class);
+			//final Intent it = new Intent(this, Calculate.class);
+			final Intent it = new Intent("BREATHALYZERCALCULATE");
 
 			it.putExtra("weight", weight);
 			it.putExtra("gender", gender);
